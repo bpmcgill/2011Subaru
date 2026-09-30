@@ -18,8 +18,8 @@ Scope: 2011 Subaru Outback Limited 3.6R, factory navigation, Harman/Kardon (HK) 
   - The HTML includes the OEM diagram pages as embedded snapshots. Confirm harness-side connector keying/orientation before probing. Amp pins are not labelled +/−; polarity must not be guessed from color.
   - WI-64 visual audit transcribed the rear-left route through R331, i2/R339 and R10 to D23; rear-right via R13 to D29; woofer R317 C12/C5/C10/C4 to R117 terminals 4/3/2/1 respectively. Retain uncertainty on pin-face orientation and verify at the vehicle.
 
-- [x] Verify R386 adapter branch, grounds, and connector identifiers.
-  - Proof: WI-62 shows R386 A10–A12 (Or/Y/Br): A10 Or routes through R384 pin 1 to R383 pin 1 BY and GND-06; A11 Y routes via R384 pin 4 / R383 pin 4 GB toward NAVI-01; A12 Br through matching adapter positions. WI-62 also shows a separate BY ground to GND-06.
+- [x] Verify documented R386 adapter-branch wire labels and separate ground routes; destination/function of the A11 continuation remains unresolved.
+  - Proof: WI-62 shows R386 A10–A12 (Or/Y/Br): A10 Or routes through R384 pin 1 to R383 pin 1 BY and GND-06; A11 Y routes through R384 pin 4 / R383 pin 4 GB and i153/R331 pin 9 to the NAVI-03 B continuation only. The reviewed diagrams do not establish that continuation’s destination or its electrical function. A12 Br routes through adapter position 3, Brown-to-Brown. WI-62 also depicts a separate BY ground to GND-06.
   - `sources/4-ground-circuit.pdf`, printed WI-30, shows C:R317 C6/C7 black joining GND-07, marked “OA: EXCEPT FOR NORMAL AUDIO MODEL.” `sources/60-rear-harness.pdf`, printed WI-256–WI-260, lists relevant connector pole counts and R383/R384 as the amp adapter cord.
 
 - [x] Verify factory amp removal safety procedure.
