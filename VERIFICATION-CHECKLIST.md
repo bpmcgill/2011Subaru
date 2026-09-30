@@ -13,7 +13,8 @@ Scope: 2011 Subaru Outback Limited 3.6R, factory navigation, Harman/Kardon (HK) 
 
 - [x] Verify premium amplifier speaker output connector IDs and pin/wire/destination routes.
   - Proof: `sources/8-audio-system.pdf`, printed WI-63 (AUDIO(PA)-04) and WI-64 (AUDIO(PA)-05), visually checked. B:R316 is 10-way; C:R317 is 12-way.
-  - Correction recorded after enlarged visual audit: LH tweeter uses R317 C3 (V) / C9 (GY) through i158/D12; RH tweeter uses R317 C1 (Lg) / C2 (Y) through R331/i153/i159/D2. R316 B1/B5 (GW) are tied and lead to AUDIO(PA)-01 A continuation; they are not the LH tweeter output. R316 B9 is WR, the RH front-door path.
+  - Corrections after enlarged visual audits: LH tweeter uses R317 C3 (V) / C9 (GY) through R331 pins 14/13 → i158 pins 1/2. RH tweeter uses R317 C1 (Lg) / C2 (Y) through R331 pins 12/11 → i159 pins 1/2. R316 B1/B5 (GW) are tied and continue to AUDIO(PA)-01 A; not tweeter outputs. Front-left door is R316 B4 (G) / B10 (Br); front-right door is R316 B3 (BR) / B9 (WR). See HTML for the traced connector paths and downstream wire color changes.
+  - A second visual review found the initial table contained errors; pin-to-wire-to-endpoint paths have since been corrected and are described in the HTML. Verify connector-face numbering at the vehicle before wiring.
   - The HTML includes the OEM diagram pages as embedded snapshots. Confirm harness-side connector keying/orientation before probing. Amp pins are not labelled +/−; polarity must not be guessed from color.
 
 - [x] Verify R386 adapter branch, grounds, and connector identifiers.
