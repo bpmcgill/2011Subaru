@@ -16,6 +16,7 @@ Scope: 2011 Subaru Outback Limited 3.6R, factory navigation, Harman/Kardon (HK) 
   - Corrections after enlarged visual audits: LH tweeter uses R317 C3 (V) / C9 (GY) through R331 pins 14/13 → i158 pins 1/2. RH tweeter uses R317 C1 (Lg) / C2 (Y) through R331 pins 12/11 → i159 pins 1/2. R316 B1/B5 (GW) are tied and continue to AUDIO(PA)-01 A; not tweeter outputs. Front-left door is R316 B4 (G) / B10 (Br); front-right door is R316 B3 (BR) / B9 (WR). See HTML for the traced connector paths and downstream wire color changes.
   - A second visual review found the initial table contained errors; pin-to-wire-to-endpoint paths have since been corrected and are described in the HTML. Verify connector-face numbering at the vehicle before wiring.
   - The HTML includes the OEM diagram pages as embedded snapshots. Confirm harness-side connector keying/orientation before probing. Amp pins are not labelled +/−; polarity must not be guessed from color.
+  - WI-64 visual audit transcribed the rear-left route through R331, i2/R339 and R10 to D23; rear-right via R13 to D29; woofer R317 C12/C5/C10/C4 to R117 terminals 4/3/2/1 respectively. Retain uncertainty on pin-face orientation and verify at the vehicle.
 
 - [x] Verify R386 adapter branch, grounds, and connector identifiers.
   - Proof: WI-62 shows R386 A10–A12 (Or/Y/Br): A10 Or routes through R384 pin 1 to R383 pin 1 BY and GND-06; A11 Y routes via R384 pin 4 / R383 pin 4 GB toward NAVI-01; A12 Br through matching adapter positions. WI-62 also shows a separate BY ground to GND-06.
@@ -25,10 +26,10 @@ Scope: 2011 Subaru Outback Limited 3.6R, factory navigation, Harman/Kardon (HK) 
   - Proof: `sources/ET-18-power-amplifier.pdf`, ET-18, HK-only procedure: disconnect battery ground; move passenger seat fully forward before disconnecting battery ground due to power seat; disconnect amplifier harness. Installation torque listed: 4.5 N·m (0.46 kgf-m, 3.32 ft-lb).
 
 - [ ] Establish factory R386 high-current battery B+ input suitable for an aftermarket amplifier.
-  - Status/proof: not established. AUDIO(PA)-01 WI-60 and NAVI-01 WI-167 show head-unit/navigation supply circuits only (FB-22 fuse 24 ACC; MB-16 fuse 10 B; MB-3 fuse 6 B; navigation also FB-26 fuse 4 IG). They do not establish an R386 high-current amplifier battery feed. Fuse summary WI-22 lists audio/amplifier loads generally, not the amp connector pinout. Do not use an unknown R386 pin or head-unit feed to power the aftermarket amplifier. Provide a separate fused battery cable sized per amplifier manufacturer unless an existing power cable is verified at the vehicle.
+  - Status/proof: no R386 high-current battery feed identified. WI-60/NAVI-01 show supply circuits for the head unit and navigation unit (FB-22 fuse 24 ACC; MB-16 fuse 10 B; MB-3 fuse 6 B; navigation also FB-26 fuse 4 IG), not an amp B+ pin. WI-22’s generic fuse/load table lists MB-3 fuse 6 for “Audio amplifier (McIntosh),” but this is not a connector pinout and does not establish applicability to the HK premium amp. Do not use an unknown R386 pin or head-unit feed for aftermarket amp power. Provide a separate fused battery cable sized per amplifier manufacturer unless an existing power cable is verified at the vehicle.
 
 - [ ] Confirm dedicated OEM amplifier remote/enable function.
-  - Status/proof: no reviewed page labels an R386 terminal “AMP REMOTE,” “AMP ON,” or “amplifier enable.” NAVI-01/NAVI-03 do trace a Yellow conductor from navigation-unit A11 through J/C i166 and i153/R331 pin 9, R383 pin 4 (GB) and R384 pin 4 to R386 A11 (Y). Its electrical function/rating is not stated; do not use it as REM based on color/route alone.
+  - Status/proof: no reviewed page labels an R386 terminal “AMP REMOTE,” “AMP ON,” or “amplifier enable.” WI-62 traces R386 A11 (Y) through R384 pin 4 / R383 pin 4 (GB) and i153/R331 pin 9 to the NAVI-03 B continuation. NAVI-01 shows that B circuit through J/C i166 to navigation-unit B:i145 pin 1 and body connector B36 pin 36. This is distinct from navigation-unit A:i144 pin A11, an LR supply. Electrical function/rating of the R386 A11 path is not stated; do not use it as REM based on color/route alone.
   - Owner context: Ben reports an existing amp turn-on wire already run to the trunk and is comfortable tapping it. This is owner-identified aftermarket wiring, not factory proof. Verify its voltage behavior with a meter during off/ACC/on and ensure it can drive the new amp REM input (or a relay if manufacturer specifies).
 
 - [ ] Confirm vehicle harness against diagram before cutting or repinning.
@@ -39,8 +40,9 @@ Scope: 2011 Subaru Outback Limited 3.6R, factory navigation, Harman/Kardon (HK) 
 - [x] Downloaded original factory PDF excerpts from user’s SMB share into `sources/`; checked PDF metadata/printed sheet IDs.
 - [x] Cross-read original text layer and visually inspected WI-62, WI-63, WI-64 and NAVI-01/NAVI-03; corrected a mistaken first-pass tweeter/R316 B9 interpretation.
 - [x] HTML contains five embedded factory diagram snapshots and inline CSS; no remote images, fonts, scripts or stylesheet dependencies detected.
-- [ ] Browser render/usability check still needed.
+- [x] Browser render/usability check performed with headless Chromium; screenshot reviewed at 1440×1100. Dark theme, top safety summary, connector key, and embedded diagrams rendered. This checks rendering/usability, not vehicle harness fitment.
 - [ ] Independent public web cross-check unavailable in this run: web search backend repeatedly returned Firecrawl `NoneType.status_code`. No internet-derived pinout is used to fill factory-manual gaps.
+- [x] Ad-hoc `/tmp` HTML verification script run and removed: balanced HTML tags/tables; expected connector key and reviewed pin labels present; exactly five base64-embedded diagram images; no external asset URLs or script tags. Chromium headless rendered the standalone file successfully.
 
 ## Naming caution
 
